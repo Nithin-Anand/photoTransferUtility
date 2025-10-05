@@ -52,12 +52,14 @@ class RAFFileCleaner:
         if self.dry_run.get():
             messagebox.showinfo("Dry Run", "Files that would be deleted:\n" + "\n".join(files_to_delete))
         else:
+            counter = 0
             for file in files_to_delete:
                 file_path = os.path.join(raf_folder, file)
                 os.remove(file_path)
                 print(f"Deleted: {file_path}")
+                counter += 1
 
-            messagebox.showinfo("Cleaning Completed", "RAF files cleaned successfully.")
+            messagebox.showinfo("Cleaning Completed", f"{counter} RAF files cleaned successfully.")
 
         self.window.quit()
 
