@@ -46,6 +46,7 @@ class RAFFileCleaner:
 
         jpg_files = set(os.listdir(jpg_folder))
         raf_files = set(os.listdir(raf_folder))
+        raf_files = [file for file in raf_files if file.endswith(".RAF")]
 
         files_to_delete = sorted([file for file in raf_files if file.replace(".RAF", ".JPG") not in jpg_files])
 
